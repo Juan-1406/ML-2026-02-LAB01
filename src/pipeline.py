@@ -40,7 +40,8 @@ class PipelineLaboratorio:
         ruta_urls: Path = RUTA_URLS,
     ) -> None:
         self.cliente = cliente or ClienteHTTP()
-        self.descubridor = descubridor or DescubridorGoogleNews(cliente=self.cliente)
+        self.descubridor = descubridor or DescubridorGoogleNews(
+            cliente=self.cliente)
         self.limpiador = limpiador or LimpiadorHTML()
         self.fabrica = fabrica or FabricaCapturadores(
             cliente=self.cliente, limpiador=self.limpiador
@@ -110,21 +111,41 @@ class PipelineLaboratorio:
             except Exception as exc:  # noqa: BLE001 — una URL no debe tumbar el lote
                 fallos += 1
                 print(f"    Error: {exc}")
-        print(f"Captura finalizada: {ok} ok, {fallos} fallos, {len(noticias)} total")
+        print(
+            f"Captura finalizada: {ok} ok, {fallos} fallos, {len(noticias)} total")
         return ok, fallos
 
-    def ejecutar_extraccion(self) -> None:
-        """TODO(alumno): Gemini + validación JSON."""
+    def ejecutar_extraccion(self) -> tuple[int, int]:
+        """Gemini: texto limpio → JSON estructurado en data/json/."""
         print("== Etapa: extraer (Gemini) ==")
         noticias = self._leer_urls()
-        try:
-            for noticia in noticias:
-                noticia.texto_limpio = self.repositorio.leer_texto(noticia.id_noticia)
+        ok, fallos = 0, 0
+        for noticia in noticias:
+            print(f"  [{noticia.id_noticia}] {noticia.fuente}")
+            try:
+                noticia.texto_limpio = self.repositorio.leer_texto(
+                    noticia.id_noticia)
+            except FileNotFoundError:
+                print(
+                    "    Sin texto en data/processed/; ejecute primero: python main.py capturar")
+                fallos += 1
+                continue
+
+            try:
                 self.extractor.extraer(noticia)
-        except EtapaPendienteAlumno as pendiente:
-            print(pendiente)
-        except FileNotFoundError:
-            print("No hay textos en data/processed/. Ejecute primero: python main.py capturar")
+                print(
+                    f"    OK: guardado en data/json/{noticia.id_noticia}.json")
+                ok += 1
+            except EtapaPendienteAlumno as pendiente:
+                print(pendiente)
+                fallos += 1
+                break
+            except Exception as exc:  # noqa: BLE001 — una noticia no debe tumbar el lote
+                print(f"    Error: {exc}")
+                fallos += 1
+        print(
+            f"Extracción finalizada: {ok} ok, {fallos} fallos, {len(noticias)} total")
+        return ok, fallos
 
     def ejecutar_obsidian(self) -> None:
         """TODO(alumno): JSON → notas Markdown enlazadas."""
