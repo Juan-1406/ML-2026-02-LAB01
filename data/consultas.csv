@@ -1,4 +1,7 @@
 consulta,categoria_busqueda,limite
 homicidio Chile,homicidio,5
-trafico de drogas Chile,trafico_drogas,5
-robo con violencia Chile,robo_con_violencia,5
+trafico de drogas Region Metropolitana,trafico_drogas,10
+ECOH Fiscalia Metropolitana,crimen_organizado,8
+ECOH homicidio Santiago,homicidio,8
+narcotrafico Santiago,trafico_drogas,10
+crimen organizado Region Metropolitana,crimen_organizado,10
