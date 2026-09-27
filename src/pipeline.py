@@ -1,7 +1,7 @@
 """Orquestación OOP del laboratorio (CRISP-DM adaptado).
 
-Etapas implementadas: descubrimiento (Google News) y captura/limpieza.
-Etapas pendientes del alumno: extracción LLM, vault Obsidian y análisis.
+Etapas implementadas: descubrimiento, captura/limpieza y extracción Gemini.
+Etapas pendientes del alumno: vault Obsidian y análisis.
 """
 
 from __future__ import annotations
@@ -14,7 +14,7 @@ from src.adquisicion.google_news import DescubridorGoogleNews
 from src.adquisicion.http import ClienteHTTP
 from src.adquisicion.repositorio import RepositorioNoticias
 from src.analisis.explorador import ExploradorDatos
-from src.config import RUTA_URLS
+from src.config import DIR_JSON, GEMINI_API_KEY, RUTA_URLS
 from src.conocimiento.obsidian import EscritorVaultObsidian
 from src.excepciones import EtapaPendienteAlumno
 from src.extraccion.gemini import ExtractorGemini

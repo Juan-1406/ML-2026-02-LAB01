@@ -5,9 +5,8 @@ El LLM no es la fuente de verdad: el código debe verificar el esquema.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
-
-from src.excepciones import EtapaPendienteAlumno
 
 
 class ValidadorJSON:
@@ -28,19 +27,36 @@ class ValidadorJSON:
         "relaciones",
     ]
 
-    def validar(self, ruta: str | Path) -> dict:
-        """Lee, parsea y valida un JSON. Debe lanzar ValueError si falta un campo.
+    CAMPOS_LISTA = [
+        "delitos",
+        "personas",
+        "organizaciones",
+        "lugares",
+        "objetos",
+        "relaciones",
+    ]
 
-        TODO(alumno):
-        1. Cargar el archivo con json.loads.
-        2. Verificar que existan CAMPOS_OBLIGATORIOS.
-        3. Verificar tipos mínimos (listas en delitos, personas, etc.).
-        4. Registrar JSON inválidos para Data Understanding.
+    def validar(self, ruta: str | Path) -> dict:
+        """Lee, parsea y valida un JSON. Lanza ValueError si el contrato no se cumple.
+
+        TODO(alumno): registrar JSON inválidos para Data Understanding
+        (conteos de campos nulos, tipos incorrectos, entidades inventadas).
         """
-        raise EtapaPendienteAlumno(
-            modulo="src.validacion.validador.ValidadorJSON.validar",
-            pista=(
-                "Implemente json.loads y compare las claves del documento "
-                f"contra {self.CAMPOS_OBLIGATORIOS}."
-            ),
-        )
+        archivo = Path(ruta)
+        try:
+            data = json.loads(archivo.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"JSON inválido en {archivo}: {exc}") from exc
+
+        if not isinstance(data, dict):
+            raise ValueError(f"{archivo} no contiene un objeto JSON.")
+
+        faltantes = [campo for campo in self.CAMPOS_OBLIGATORIOS if campo not in data]
+        if faltantes:
+            raise ValueError(f"{archivo}: faltan campos {faltantes}")
+
+        for campo in self.CAMPOS_LISTA:
+            if not isinstance(data[campo], list):
+                raise ValueError(f"{archivo}: '{campo}' debe ser una lista")
+
+        return data

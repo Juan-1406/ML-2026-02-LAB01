@@ -13,4 +13,4 @@ dependencies:
   - python-dotenv
   - pip
   - pip:
-      - google-generativeai
+      - google-genai

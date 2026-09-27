@@ -1,0 +1,21 @@
+{
+  "id_noticia": "N001",
+  "titulo": "Operativo policial en La Serena",
+  "fecha_publicacion": "2026-08-20",
+  "fuente": "Medio de prensa",
+  "url": "https://ejemplo.cl/noticia/n001",
+  "resumen": "Carabineros detuvo a una persona en La Serena en el marco de una investigación por tráfico de drogas.",
+  "delitos": ["Trafico de drogas"],
+  "personas": [
+    {"nombre": "Juan Perez", "rol": "imputado"}
+  ],
+  "organizaciones": ["Los X", "Carabineros"],
+  "lugares": ["La Serena", "Region de Coquimbo"],
+  "objetos": [
+    {"tipo": "sustancia", "nombre": "cocaina", "cantidad": null, "unidad": null}
+  ],
+  "relaciones": [
+    {"origen": "Juan Perez", "tipo": "INVESTIGADO_POR", "destino": "Trafico de drogas"},
+    {"origen": "Los X", "tipo": "OPERA_EN", "destino": "La Serena"}
+  ]
+}

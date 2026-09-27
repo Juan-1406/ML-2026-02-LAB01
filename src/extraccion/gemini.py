@@ -1,4 +1,4 @@
-"""Contrato de extracción con un LLM.
+"""Extractor Gemini: texto limpio → JSON del contrato del laboratorio.
 
 Extrae solo información explícita en la noticia, en JSON válido.
 """
@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 from abc import ABC, abstractmethod
+from pathlib import Path
 
 import google.generativeai as genai
 from dotenv import load_dotenv

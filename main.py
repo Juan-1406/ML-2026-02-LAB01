@@ -5,10 +5,10 @@ Uso (con el entorno conda activado):
 
     python main.py descubrir   # Google News RSS → data/urls.csv
     python main.py capturar    # URLs → data/raw + data/processed
-    python main.py extraer     # TODO(alumno) Gemini
+    python main.py extraer     # Gemini → data/json (requiere GEMINI_API_KEY)
     python main.py obsidian    # TODO(alumno) vault Markdown
     python main.py analizar    # TODO(alumno) Data Understanding
-    python main.py pipeline    # descubrir + capturar + aviso de pendientes
+    python main.py pipeline    # descubrir + capturar + extraer; avisa pendientes
 """
 
 from __future__ import annotations
