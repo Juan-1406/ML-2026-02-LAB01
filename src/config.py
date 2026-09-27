@@ -4,10 +4,14 @@ Toda ruta se calcula desde la raíz del repositorio para que el pipeline
 funcione igual si se ejecuta `python main.py` desde cualquier cwd.
 """
 
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 # Raíz del repositorio (un nivel sobre src/).
 RAIZ = Path(__file__).resolve().parent.parent
+load_dotenv(RAIZ / ".env")
 
 DATA_DIR = RAIZ / "data"
 RUTA_URLS = DATA_DIR / "urls.csv"
