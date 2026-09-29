@@ -21,6 +21,7 @@ class NoticiaFuente:
     categoria_busqueda: str = ""
     html: Optional[str] = None
     texto_limpio: Optional[str] = None
+    fecha_publicacion: Optional[str] = None
 
 
 @dataclass

@@ -1,7 +1,7 @@
 """Orquestación OOP del laboratorio (CRISP-DM adaptado).
 
-Etapas implementadas: descubrimiento, captura/limpieza y extracción Gemini.
-Etapas pendientes del alumno: vault Obsidian y análisis.
+Etapas implementadas: descubrimiento, captura/limpieza, extracción Gemini
+con validación y vault Obsidian. Etapa pendiente del alumno: análisis.
 """
 
 from __future__ import annotations
@@ -14,7 +14,7 @@ from src.adquisicion.google_news import DescubridorGoogleNews
 from src.adquisicion.http import ClienteHTTP
 from src.adquisicion.repositorio import RepositorioNoticias
 from src.analisis.explorador import ExploradorDatos
-from src.config import DIR_JSON, GEMINI_API_KEY, RUTA_URLS
+from src.config import DIR_JSON, DIR_RAW, GEMINI_API_KEY, RUTA_URLS
 from src.conocimiento.obsidian import EscritorVaultObsidian
 from src.excepciones import EtapaPendienteAlumno
 from src.extraccion.gemini import ExtractorGemini
@@ -116,7 +116,7 @@ class PipelineLaboratorio:
         return ok, fallos
 
     def ejecutar_extraccion(self) -> tuple[int, int]:
-        """Gemini: texto limpio → JSON estructurado en data/json/."""
+        """Gemini: texto limpio → JSON en data/json/, validado contra el contrato."""
         print("== Etapa: extraer (Gemini) ==")
         noticias = self._leer_urls()
         ok, fallos = 0, 0
@@ -131,10 +131,19 @@ class PipelineLaboratorio:
                 fallos += 1
                 continue
 
+            ruta_html = DIR_RAW / f"{noticia.id_noticia}.html"
+            if ruta_html.exists():
+                # La fecha rara vez está en el texto visible (vive en <meta>/JSON-LD),
+                # así que se busca aparte en el HTML crudo en vez de pedírsela al LLM.
+                noticia.fecha_publicacion = self.limpiador.extraer_fecha(
+                    ruta_html.read_text(encoding="utf-8")
+                )
+
             try:
                 self.extractor.extraer(noticia)
+                self.validador.validar(DIR_JSON / f"{noticia.id_noticia}.json")
                 print(
-                    f"    OK: guardado en data/json/{noticia.id_noticia}.json")
+                    f"    OK: guardado y validado en data/json/{noticia.id_noticia}.json")
                 ok += 1
             except EtapaPendienteAlumno as pendiente:
                 print(pendiente)
@@ -147,13 +156,30 @@ class PipelineLaboratorio:
             f"Extracción finalizada: {ok} ok, {fallos} fallos, {len(noticias)} total")
         return ok, fallos
 
-    def ejecutar_obsidian(self) -> None:
-        """TODO(alumno): JSON → notas Markdown enlazadas."""
+    def _cargar_json_validados(self) -> list[dict]:
+        """JSON de noticias que cumplen el contrato; los inválidos se omiten."""
+        noticias = []
+        for ruta in sorted(DIR_JSON.glob("N[0-9]*.json")):
+            try:
+                noticias.append(self.validador.validar(ruta, registrar=False))
+            except ValueError as exc:
+                print(f"  Omitido {ruta.name}: {exc}")
+        return noticias
+
+    def ejecutar_obsidian(self) -> int:
+        """JSON validados → notas Markdown enlazadas en obsidian_vault/."""
         print("== Etapa: obsidian (vault) ==")
-        try:
-            self.escritor.escribir_vault([])
-        except EtapaPendienteAlumno as pendiente:
-            print(pendiente)
+        noticias = self._cargar_json_validados()
+        if not noticias:
+            print("No hay JSON válidos en data/json/. Ejecute primero: python main.py extraer")
+            return 0
+        self.escritor.escribir_vault(noticias)
+        notas = len(list(self.escritor.vault.rglob("*.md")))
+        print(
+            f"Vault generado en {self.escritor.vault}: {len(noticias)} noticias, {notas} notas, "
+            f"{self.escritor.variantes_unificadas} variantes unificadas (data/equivalencias.csv)"
+        )
+        return len(noticias)
 
     def ejecutar_analisis(self) -> None:
         """TODO(alumno): Data Understanding y visualizaciones."""

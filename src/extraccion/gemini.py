@@ -80,8 +80,24 @@ Reglas estrictas:
 - Extrae ÚNICAMENTE información explícita en el texto de la noticia.
 - NO inventes personas, roles, delitos, objetos ni relaciones que no aparezcan
   literalmente en el texto.
+- Ignora pronombres
 - Si un dato no aparece en la noticia, usa null (o una lista vacía [] cuando
   corresponda a un campo de lista).
+- Ignora nombres que aparezcan en bloques de "noticias relacionadas",
+  publicidad, biografías de columnistas o cualquier sección que no sea el
+  cuerpo del hecho policial que se relata (por ejemplo, celebridades citadas
+  solo como comparación o clickbait). Si dudas si un nombre pertenece al
+  hecho narrado, no lo incluyas.
+- En "relaciones", "origen" y "destino" deben ser SIEMPRE un nombre propio
+  corto (una persona, organización o lugar concreto), nunca una oración,
+  una explicación ni una cita textual. Si la conexión entre dos entidades no
+  se puede resumir en un nombre propio para cada extremo, no reportes esa
+  relación.
+- El "tipo" de una relación es una frase verbal corta en minúsculas, con
+  espacios (no guiones bajos), por ejemplo "lidera" o "opera en"; usa
+  siempre la misma redacción para el mismo tipo de vínculo dentro de la
+  noticia (no mezcles "atacó a" con "atacó con un arma de fuego a" si es el
+  mismo hecho).
 - Responde EXCLUSIVAMENTE con un objeto JSON válido, sin bloques de código
   markdown (nada de ```), sin explicaciones ni texto adicional antes o
   después del JSON.
@@ -138,10 +154,21 @@ Texto de la noticia:
                 f"Respuesta cruda: {texto}"
             ) from exc
 
+        if not datos.get("fecha_publicacion") and noticia.fecha_publicacion:
+            # El texto limpio rara vez trae la fecha (vive en <meta>/JSON-LD, no
+            # en el cuerpo visible); si el pipeline ya la extrajo del HTML, se usa.
+            datos["fecha_publicacion"] = noticia.fecha_publicacion
+
+        for rel in datos.get("relaciones") or []:
+            # El prompt pide "tipo" sin guiones bajos, pero no hay que confiar en
+            # que el modelo lo respete siempre; se normaliza igual al guardar.
+            tipo = rel.get("tipo")
+            if isinstance(tipo, str):
+                rel["tipo"] = " ".join(tipo.replace("_", " ").split())
+
         ruta = self.dir_json / f"{noticia.id_noticia}.json"
         ruta.write_text(
             json.dumps(datos, ensure_ascii=False, indent=2), encoding="utf-8"
         )
 
         return datos
-    

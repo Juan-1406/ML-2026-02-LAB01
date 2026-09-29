@@ -111,6 +111,7 @@ Las relaciones se expresan con enlaces `[[...]]`. No se usa SQLite, MongoDB ni N
 - [data/consultas.csv](data/consultas.csv): búsquedas semilla para Google News
 - [data/urls.csv](data/urls.csv): cuatro noticias públicas (BioBioChile, Cooperativa, La Tercera)
 - [data/json/ejemplo_N001.json](data/json/ejemplo_N001.json): JSON de ejemplo para implementar Obsidian sin API
+- [data/equivalencias.csv](data/equivalencias.csv): variantes de nombres que el vault unifica (siglas, plurales, sinónimos); cada fila lleva su justificación en la columna `nota`
 
 Las URLs de prensa cambian con el tiempo. Si una descarga falla, el lote continúa y registra el error. Puede ampliar `urls.csv` a mano (30–50 URLs verificadas, como pide la guía).
 

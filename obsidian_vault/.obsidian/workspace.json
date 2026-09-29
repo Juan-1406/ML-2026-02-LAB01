@@ -1,0 +1,213 @@
+{
+  "main": {
+    "id": "3bcb25de109fee98",
+    "type": "split",
+    "children": [
+      {
+        "id": "15305a95045845e4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0bef986856d06d1b",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Vista gráfica"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "184fb30783c66243",
+    "type": "split",
+    "children": [
+      {
+        "id": "17fa5524263e131b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9bda81c0318b310e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "412cd009c1026016",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#delito",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "d2df52f293b49cbb",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "187a200863e41402",
+    "type": "split",
+    "children": [
+      {
+        "id": "1820fb2125e901d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "de59558ebedb3c2c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes"
+            }
+          },
+          {
+            "id": "561fe2bf53af0817",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes"
+            }
+          },
+          {
+            "id": "242239c9a7ae5f66",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "8fa24fc30d9c8387",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "ee9ec455babae4cd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "0bef986856d06d1b",
+  "lastOpenFiles": [
+    "Noticias/N029.md",
+    "Relaciones/amigo de.md",
+    "Relaciones/es accionista en.md",
+    "Relaciones/es gerente general de.md",
+    "Relaciones/controla gestion en.md",
+    "Relaciones/presunto autor de.md",
+    "Relaciones/participó en.md",
+    "Relaciones/alcaldesa de.md",
+    "Relaciones/jefa de.md",
+    "Relaciones/fiscal de.md",
+    "Relaciones/detenido por.md",
+    "Relaciones/investiga junto a.md",
+    "Relaciones/vinculado con.md",
+    "Relaciones/trabaja en conjunto con.md",
+    "Relaciones/agredió a.md",
+    "Relaciones/atacó a.md",
+    "Relaciones/cometió delito en.md",
+    "Relaciones/lleva a cabo.md",
+    "Relaciones/detuvo a.md",
+    "Relaciones/decretó.md",
+    "Relaciones/cometió.md",
+    "Relaciones/imputado por.md",
+    "Relaciones/pertenece a.md",
+    "Relaciones/víctima de.md",
+    "Relaciones/arrendó una casa de.md",
+    "Relaciones/ofreció dinero por la muerte de.md"
+  ]
+}

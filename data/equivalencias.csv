@@ -1,0 +1,79 @@
+# Equivalencias de nombres para el vault de Obsidian (python main.py obsidian).
+# Cada fila unifica una `variante` bajo su nombre `canonico`, dentro de una categoría:
+# delitos | personas | organizaciones | lugares | objetos | relaciones (tipos de relación).
+# Se compara sin tildes ni mayúsculas. Unificar dos cosas distintas crea conexiones falsas
+# entre noticias: en la duda, no unificar. La columna `nota` deja la justificación.
+categoria,canonico,variante,nota
+delitos,homicidio,homicidios,"plural y sinónimos de uso periodístico; calificado, frustrado, triple, robo con y secuestro con siguen aparte"
+delitos,homicidio,asesinato,"plural y sinónimos de uso periodístico; calificado, frustrado, triple, robo con y secuestro con siguen aparte"
+delitos,homicidio,homicidio consumado,"plural y sinónimos de uso periodístico; calificado, frustrado, triple, robo con y secuestro con siguen aparte"
+delitos,extorsión,extorsiones,plural
+delitos,lavado de activos,lavado de activo,lavado de dinero es el término coloquial del mismo delito
+delitos,lavado de activos,lavado de dinero,lavado de dinero es el término coloquial del mismo delito
+delitos,tráfico de drogas,narcotráfico,sinónimo
+delitos,microtráfico,tráfico de pequeñas cantidades de droga,"el microtráfico es el tráfico de pequeñas cantidades (Ley 20.000, art. 4)"
+delitos,porte ilegal de armas,porte de arma,"misma figura, distinta redacción"
+delitos,porte ilegal de armas de fuego,porte de arma de fuego,"misma figura, distinta redacción"
+organizaciones,PDI,Policía de Investigaciones,"nombre completo, sigla y cuenta oficial de la misma institución"
+organizaciones,PDI,Policía de Investigaciones (PDI),"nombre completo, sigla y cuenta oficial de la misma institución"
+organizaciones,PDI,PDI_CHILE,"nombre completo, sigla y cuenta oficial de la misma institución"
+organizaciones,Carabineros,Carabineros de Chile,mismo nombre
+organizaciones,Ministerio Público,Fiscalía,la Fiscalía de Chile es el Ministerio Público; las fiscalías regionales siguen aparte
+organizaciones,Fiscalía Regional Metropolitana Sur,Fiscalía Metropolitana Sur,"N018 ('Fiscalía Sur') cubre Lo Espejo y La Legua, jurisdicción de la Fiscalía Sur"
+organizaciones,Fiscalía Regional Metropolitana Sur,Fiscalía Sur,"N018 ('Fiscalía Sur') cubre Lo Espejo y La Legua, jurisdicción de la Fiscalía Sur"
+organizaciones,Fiscalía Regional Metropolitana Occidente,Fiscalía Occidente,Fisc_Occidente es la cuenta oficial de esa fiscalía (N011)
+organizaciones,Fiscalía Regional Metropolitana Occidente,Fiscalía Metropolitana Occidente,Fisc_Occidente es la cuenta oficial de esa fiscalía (N011)
+organizaciones,Fiscalía Regional Metropolitana Occidente,Fisc_Occidente,Fisc_Occidente es la cuenta oficial de esa fiscalía (N011)
+organizaciones,Fiscalía Regional Metropolitana Oriente,Fiscalía Oriente,nombre abreviado
+organizaciones,Fiscalía Regional de Aysén,Fiscalía de Aysén,nombre abreviado
+organizaciones,Equipo contra el Crimen Organizado y Homicidios (ECOH),Equipo de Crimen Organizado y Homicidios (ECOH),"mismo equipo de la Fiscalía, nombrado de distinta forma"
+organizaciones,Equipo contra el Crimen Organizado y Homicidios (ECOH),Fiscalía ECOH,"mismo equipo de la Fiscalía, nombrado de distinta forma"
+organizaciones,Equipo contra el Crimen Organizado y Homicidios (ECOH),ECOH RM,"mismo equipo de la Fiscalía, nombrado de distinta forma"
+organizaciones,OS-9 de Carabineros,OS-9,OS9 = Departamento de Investigación de Organizaciones Criminales de Carabineros. NO unir con OS-7
+organizaciones,OS-9 de Carabineros,OS9 de Carabineros,OS9 = Departamento de Investigación de Organizaciones Criminales de Carabineros. NO unir con OS-7
+organizaciones,OS-9 de Carabineros,Departamento Investigación de Organizaciones Criminales (OS9),OS9 = Departamento de Investigación de Organizaciones Criminales de Carabineros. NO unir con OS-7
+organizaciones,OS-7 de Carabineros,OS-7,nombre abreviado. NO unir con OS-9
+organizaciones,Los Pájaros de La Legua,Los Pájaros,N018 la nombra completa y N019 y N030 la abrevian
+organizaciones,Los Chicorti,Los Chicorty,variante de escritura (N019 vs N007)
+organizaciones,Brigada de Homicidios Sur de la PDI,Brigada de Homicidios Sur,nombre abreviado
+organizaciones,Brigada Investigadora del Crimen Organizado (Brico),Brigada Investigadora contra el Crimen Organizado (Brico),misma brigada (Brico) de la PDI
+organizaciones,Brigada Investigadora del Crimen Organizado (Brico),Brigada Investigadora del Crimen Organizado (Brico) de la PDI,misma brigada (Brico) de la PDI
+lugares,Región Metropolitana,RM,sigla usual en la prensa chilena
+lugares,Barrio Bellavista,Bellavista,ambas aparecen en N028 y se refieren al mismo barrio
+lugares,zona sur de Santiago,zona sur de la capital,mismo referente (el sur de Santiago)
+lugares,zona sur de Santiago,sector sur de Santiago,mismo referente (el sur de Santiago)
+lugares,China,República Popular China,mismo país
+lugares,Región del Biobío,región del Bío Bío,variante de escritura
+objetos,armas de fuego,arma de fuego,singular y plural
+objetos,armas,arma,sinónimos genéricos
+objetos,armas,armamento,sinónimos genéricos
+objetos,cocaína,clorhidrato de cocaína,el clorhidrato es la cocaína; 'cocaína base' sigue aparte
+objetos,marihuana,cannabis,misma sustancia; 'cáñamo medicinal' sigue aparte
+objetos,marihuana,cannabis psicoactivo,misma sustancia; 'cáñamo medicinal' sigue aparte
+objetos,dinero en efectivo,efectivo,dinero incautado en efectivo
+objetos,dinero en efectivo,pesos en efectivo,dinero incautado en efectivo
+objetos,vehículo,automóvil,sinónimos genéricos; los modelos específicos siguen aparte
+objetos,vehículo,autos,sinónimos genéricos; los modelos específicos siguen aparte
+objetos,teléfonos celulares,celulares,sinónimo
+objetos,municiones,balas,sinónimo
+personas,Marcelo Araya,Araya,"N006, N019 y N021: 'General Araya' (general director de Carabineros); N007 da el nombre completo"
+personas,Cristopher Aguilera,Aguilera,"N017 'cabo Aguilera' (funeral); N006 'Cabo Cristopher Aguilera', asesinado en Lo Espejo"
+personas,Martín Arrau,Arrau,"N007 'Arrau' como ministro de Seguridad; N001 'ministro de Seguridad, Martín Arrau'"
+personas,Andrés Astorga Rodríguez,Andrés Astorga,"misma noticia (N029), el mismo empresario"
+personas,Yondri Martínez Garcés,Martínez,"misma noticia (N020), el otro acusado"
+personas,Héctor Aladino Cárdenas Venegas,Cárdenas,"N001: 'Héctor Aladino Cárdenas Venegas, alias El Poroto'; N030 habla de 'Cárdenas' = El Poroto"
+relaciones,pertenece a,pertenece_a,todas expresan pertenencia a un grupo u organización
+relaciones,pertenece a,es miembro de,todas expresan pertenencia a un grupo u organización
+relaciones,pertenece a,miembro de,todas expresan pertenencia a un grupo u organización
+relaciones,pertenece a,integra,todas expresan pertenencia a un grupo u organización
+relaciones,pertenece a,forma parte de,todas expresan pertenencia a un grupo u organización
+relaciones,pertenece a,parte_de,todas expresan pertenencia a un grupo u organización
+relaciones,lidera,lidera a,todas expresan liderazgo
+relaciones,lidera,líder de,todas expresan liderazgo
+relaciones,lidera,es líder narco de,todas expresan liderazgo
+relaciones,lidera,dirige,todas expresan liderazgo
+relaciones,investiga,investiga a,misma relación
+relaciones,cometió,cometió delito,misma relación
+relaciones,detuvo a,detuvo,misma relación
+relaciones,vinculado con,vinculado a,misma relación
+relaciones,vinculado con,se vinculó con,misma relación

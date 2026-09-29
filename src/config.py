@@ -16,6 +16,7 @@ load_dotenv(RAIZ / ".env")
 DATA_DIR = RAIZ / "data"
 RUTA_URLS = DATA_DIR / "urls.csv"
 RUTA_CONSULTAS = DATA_DIR / "consultas.csv"
+RUTA_EQUIVALENCIAS = DATA_DIR / "equivalencias.csv"
 DIR_RAW = DATA_DIR / "raw"
 DIR_PROCESSED = DATA_DIR / "processed"
 DIR_JSON = DATA_DIR / "json"
